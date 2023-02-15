@@ -1,6 +1,8 @@
 """EE 250L Lab 04 Starter Code
 Run vm_sub.py in a separate terminal on your VM."""
 
+# Github Repo Link: https://github.com/jessicazhu318/lab-04.git
+
 import paho.mqtt.client as mqtt
 import time
 from datetime import datetime
@@ -14,8 +16,9 @@ def on_connect(client, userdata, flags, rc):
 
 if __name__ == '__main__':
     #get IP address
-    ip_address=0 
-    """your code here"""
+    ip_address=0
+    hostname = socket.gethostname()
+    ip_address = socket.gethostbyname(hostname)
     #create a client object
     client = mqtt.Client()
     
@@ -40,12 +43,16 @@ if __name__ == '__main__':
     time.sleep(1)
 
     while True:
-        #replace user with your USC username in all subscriptions
-        client.publish("user/ipinfo", f"{ip_address}")
+        #replaced user with my USC username zhujessi in all subscriptions
+        client.publish("zhujessi/ipinfo", f"{ip_address}")
         print("Publishing ip address")
         time.sleep(4)
 
         #get date and time 
-        """your code here"""
+        currentTime = datetime.now()
+        
         #publish date and time in their own topics
-        """your code here"""
+        client.publish("zhujessi/datetime", f"{currentTime}")
+        print("Publishing current date and time")
+        time.sleep(4)
+        

@@ -6,5 +6,5 @@
 - No second team member
 
 ## Github Repo Link
- https://github.com/jessicazhu318/lab-04.git
+https://github.com/jessicazhu318/lab-04.git
 

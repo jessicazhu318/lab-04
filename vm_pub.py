@@ -5,7 +5,8 @@ Run vm_sub.py in a separate terminal on your VM."""
 
 import paho.mqtt.client as mqtt
 import time
-from datetime import datetime
+from datetime import datetime 
+from datetime import date
 import socket
 
 """This function (or "callback") will be executed when this client receives 
@@ -49,10 +50,14 @@ if __name__ == '__main__':
         time.sleep(4)
 
         #get date and time 
-        currentTime = datetime.now()
+        currentDate = date.today()
+        currentTime = datetime.now().strftime("%H:%M:%S")
         
         #publish date and time in their own topics
-        client.publish("zhujessi/datetime", f"{currentTime}")
-        print("Publishing current date and time")
+        client.publish("zhujessi/date", f"{currentDate}")
+        print("Publishing current date")
+        time.sleep(4)
+        client.publish("zhujessi/time", f"{currentTime}")
+        print("Publishing current time")
         time.sleep(4)
         
